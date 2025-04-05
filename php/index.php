@@ -10,7 +10,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['task'])) {
     if (!empty($task)) {
         if ($taskId) {
             // Update the task if taskId is provided
-            $stmt = $conn->prepare("UPDATE tasks SET task = ? WHERE id = ?");
+            $stmt = $conn->prepare("UPDATE tasks SET task = ? WHERE taskId = ?");
             $stmt->bind_param('si', $task, $taskId);  // 's' for string, 'i' for integer
         } else {
             // Insert new task if no taskId
@@ -25,7 +25,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['task'])) {
 if ($_SERVER['REQUEST_METHOD'] == 'GET' && isset($_GET['delete'])) {
     $id = $_GET['delete'];
     // Delete task from database
-    $stmt = $conn->prepare("DELETE FROM tasks WHERE id = ?");
+    $stmt = $conn->prepare("DELETE FROM tasks WHERE taskId = ?");
     $stmt->bind_param('i', $id); // 'i' for integer type
     $stmt->execute();
 }
@@ -293,7 +293,7 @@ $tasks = $result->fetch_all(MYSQLI_ASSOC);  // Fetch all tasks as an associative
             <li>
                 <input type="checkbox" <?php echo $task['completed'] ? 'checked' : ''; ?> onclick="window.location='?toggle=<?php echo $task['taskId']; ?>'">
                 
-                <?php if (isset($_GET['edit']) && $_GET['edit'] == $task['id']): ?>
+                <?php if (isset($_GET['edit']) && $_GET['edit'] == $task['taskId']): ?>
                     <!-- Editing the task -->
                     <form action="index.php" method="post">
                         <input type="text" name="task" value="<?php echo htmlspecialchars($task['task']); ?>" required />
