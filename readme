@@ -1,0 +1,52 @@
+# MySQL Docker Compose Example
+# This example demonstrates how to set up a MySQL container using Docker Compose.
+# It includes a custom network for communication between containers and an initialization script for the database.
+
+# step by step instruction make sure you have apache2.4 and php 8.1 installed on your machine and docker installed 
+
+# 1 if you did not vhange anything run this command to build and run the containers
+docker-compose up -d --build 
+
+# if you replace password of docker-compose.yml it should match the password in db_connection.php file
+# if not proceed to step # 2
+
+
+# 2 then run this command to run phpmyadmin container
+# make sure you have the same network name as in your docker-compose.yml file
+docker run \
+--name phpmyadmin \
+--network mysql_network \
+-e PMA_HOST=mysql-container \
+-p 8082:80 \
+-d phpmyadmin/phpmyadmin
+
+# 3 if you want to check the MySQL container and see if it is running
+docker exec -it mysql-container bash
+
+# 4 then check your docker yml and db connection if they have the same MySQL pass
+mysql -u root -p # enter the password you set in the docker-compose.yml file for MySQL root password 
+
+
+# check if php/db_connection.php has the same password as in the docker-compose.yml file in my case password is ems_sem
+
+
+# 5 use docker stop <id> command to pause MySQL
+docker stop <replace this with id or name of the container>
+# response should be like this
+Warning: mysqli::__construct(): php_network_getaddresses: getaddrinfo failed: Temporary failure in name resolution in /usr/share/nginx/html/db_connection.php on line 8
+
+Warning: mysqli::__construct(): (HY000/2002): php_network_getaddresses: getaddrinfo failed: Temporary failure in name resolution in /usr/share/nginx/html/db_connection.php on line 8
+Connection failed: php_network_getaddresses: getaddrinfo failed: Temporary failure in name resolution
+
+# 6 start the MySQL docker start and see if there is change :) then your done
+
+# removing or putting down container
+# if you build from your own because you tweak something before build
+docker-compose down # run this first if you tweak something
+
+# stop all container
+docker stop $(docker ps -q)
+
+# delete all container
+docker rm $(docker ps -aq)
+docker ps

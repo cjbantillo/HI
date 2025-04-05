@@ -1,7 +1,7 @@
 <?php
 $servername = "mysql-container";  // MySQL container name
 $username = "root";               // MySQL username
-$password = "Nik@1631";       // MySQL password
+$password = "ems_sem";       // MySQL password
 $dbname = "Lab3";        // MySQL database name
 
 // Create connection
