@@ -1,0 +1,151 @@
+/* Reset default margins and padding */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body styling for centering the container */
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #f0f0f0; /* Light gray background */
+    font-family: Arial, sans-serif;
+}
+
+/* Container styling */
+.todo-container {
+    width: 400px; /* Fixed width */
+    height: 500px; /* Fixed height */
+    background-color: #fff; /* White background */
+    border-radius: 10px; /* Rounded corners */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    padding: 20px; /* Inner padding */
+    display: flex;
+    flex-direction: column; /* Stack children vertically */
+}
+
+/* Title styling */
+.todo-container h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #333; /* Dark gray text */
+}
+
+/* Error message styling */
+.error-message {
+    color: #e74c3c;
+    margin: 10px 0;
+    text-align: center;
+}
+
+/* Task input form styling */
+.edit-form {
+    display: flex;
+    width: 100%;
+    gap: 10px;
+    margin-bottom: 20px; /* Space before task list */
+}
+
+.edit-form input[type="text"] {
+    flex-grow: 1;
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 14px;
+    margin-bottom: 0;
+}
+
+.edit-form button {
+    width: auto;
+    padding: 8px 16px;
+    background-color: #2ecc71; /* Green button */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.edit-form button:hover {
+    background-color: #27ae60; /* Darker green on hover */
+}
+
+/* Task list styling */
+.todo-list {
+    list-style: none;
+    flex-grow: 1; /* Take up remaining space */
+    overflow-y: auto; /* Scroll if content overflows */
+    padding-right: 10px; /* Space for scrollbar */
+}
+
+/* Individual task item styling */
+.todo-list li {
+    display: flex;
+    align-items: center;
+    padding: 10px 0;
+    border-bottom: 1px solid #eee; /* Subtle separator */
+}
+
+/* Checkbox styling */
+.todo-list input[type="checkbox"] {
+    margin-right: 10px;
+}
+
+/* Task text styling */
+.todo-list span {
+    flex-grow: 1;
+    color: #333;
+}
+
+.todo-list .completed-task {
+    text-decoration: line-through;
+    color: #888; /* Gray out completed tasks */
+}
+
+/* Button container for edit/delete */
+.todo-list div {
+    display: flex;
+    gap: 10px;
+}
+
+/* Edit and delete button styling */
+.edit-btn, .delete-btn {
+    text-decoration: none;
+    font-size: 16px;
+    padding: 2px 8px;
+    border-radius: 3px;
+}
+
+.edit-btn {
+    color: #3498db; /* Blue for edit */
+}
+
+.edit-btn:hover {
+    background-color: #3498db;
+    color: white;
+}
+
+.delete-btn {
+    color: #e74c3c; /* Red for delete */
+}
+
+.delete-btn:hover {
+    background-color: #e74c3c;
+    color: white;
+}
+
+/* Scrollbar styling (optional) */
+.todo-list::-webkit-scrollbar {
+    width: 8px;
+}
+
+.todo-list::-webkit-scrollbar-thumb {
+    background-color: #ccc;
+    border-radius: 4px;
+}
+
+.todo-list::-webkit-scrollbar-track {
+    background-color: #f5f5f5;
+}

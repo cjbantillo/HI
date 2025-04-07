@@ -5,7 +5,7 @@
 # step by step instruction make sure you have apache2.4 and php 8.1 installed on your machine and docker installed 
 
 # 1 if you did not vhange anything run this command to build and run the containers
-docker-compose up -d --build 
+docker-compose up -d --build
 
 # if you replace password of docker-compose.yml it should match the password in db_connection.php file
 # if not proceed to step # 2
@@ -42,7 +42,8 @@ Connection failed: php_network_getaddresses: getaddrinfo failed: Temporary failu
 
 # removing or putting down container
 # if you build from your own because you tweak something before build
-docker-compose down # run this first if you tweak something
+docker-compose down 
+# run this first if you tweak something
 
 # stop all container
 docker stop $(docker ps -q)
