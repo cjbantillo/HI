@@ -33,7 +33,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET' && isset($_GET['delete'])) {
 // Toggle task completion
 if ($_SERVER['REQUEST_METHOD'] == 'GET' && isset($_GET['toggle'])) {
     $id = $_GET['toggle'];
-    $stmt = $conn->prepare("UPDATE tasks SET completed = NOT completed WHERE id = ?");
+    $stmt = $conn->prepare("UPDATE tasks SET completed = NOT completed WHERE taskId = ?");
     $stmt->bind_param('i', $id);
     $stmt->execute();
 }
